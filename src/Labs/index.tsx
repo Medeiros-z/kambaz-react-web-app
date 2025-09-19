@@ -6,6 +6,8 @@
 // which is replaced by HTML the function returns implemented in the
 // Lab1 function
 
+// Name: Zackary Medeiros
+
 import Lab1 from "./Lab1";
 import { Route, Routes, Navigate } from "react-router";
 import TOC from "./TOC";
@@ -16,6 +18,8 @@ import Lab3 from "./Lab3";
 export default function Labs() {
   return (
     <div id="wd-labs">
+      <h1>Zackary Medeiros</h1>
+      <a href="https://github.com/Medeiros-z/kambaz-react-web-app">GitHub Repository</a>
       <h1>Labs</h1>
       <TOC />
       <Routes>
