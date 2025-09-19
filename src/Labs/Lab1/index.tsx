@@ -277,7 +277,7 @@ Text documents are often broken up into several sections and subsections. Each s
 
         <h4>Anchor tag</h4>
         Please <a href="https://www.lipsum.com" id="wd-lipsum">click here</a> to get dummy text<br/>
-        Follow <a href="" id="wd-github">this link</a> to find the repository of this project<br/>
+        Follow <a href="https://github.com/Medeiros-z/kambaz-react-web-app" id="wd-github">this link</a> to find the repository of this project<br/>
 
     </div>
 );}
