@@ -1,6 +1,5 @@
 import { ListGroup, Button, InputGroup, FormControl } from "react-bootstrap";
 import { BsGripVertical, BsPlusLg, BsSearch } from "react-icons/bs";
-import GreenCheckmark from "../Modules/GreenCheckmark";
 
 export default function Assignments() {
   return (
