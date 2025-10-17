@@ -1,13 +1,24 @@
-import { Form, Row, Col } from "react-bootstrap";
+import { Form, Row, Col, Button } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
+import * as db from "../../Database";
 
 export default function AssignmentEditor() {
+  const { cid, aid } = useParams();
+  const assignment = db.assignments.find(
+    (a) => a._id === aid && a.course === cid
+  );
+
+  if (!assignment) {
+    return <div className="p-3">Assignment not found.</div>;
+  }
+
   return (
     <div id="wd-assignments-editor" className="p-3">
       <Form>
         {/* Assignment Name */}
         <Form.Group className="mb-3" controlId="wd-name">
           <Form.Label>Assignment Name</Form.Label>
-          <Form.Control type="text" defaultValue="A1 - ENV + HTML" />
+          <Form.Control type="text" defaultValue={assignment.title} />
         </Form.Group>
 
         {/* Assignment Description */}
@@ -16,7 +27,7 @@ export default function AssignmentEditor() {
           <Form.Control
             as="textarea"
             rows={3}
-            defaultValue="The assignment is available online. Submit a link to the landing page of"
+            defaultValue={assignment.description || ""}
           />
         </Form.Group>
 
@@ -24,7 +35,7 @@ export default function AssignmentEditor() {
         <Row className="mb-3">
           <Col md={2}>
             <Form.Label>Points</Form.Label>
-            <Form.Control type="number" defaultValue={100} />
+            <Form.Control type="number" defaultValue={assignment.points || 100} />
           </Col>
           <Col md={4}>
             <Form.Label>Assignment Group</Form.Label>
@@ -70,7 +81,7 @@ export default function AssignmentEditor() {
         {/* Due Date */}
         <Form.Group className="mb-3" controlId="wd-due-date">
           <Form.Label>Due Date</Form.Label>
-          <Form.Control type="date" />
+          <Form.Control type="date" defaultValue={assignment.dueDate || ""} />
         </Form.Group>
 
         {/* Available From / Until */}
@@ -78,16 +89,26 @@ export default function AssignmentEditor() {
           <Col>
             <Form.Group controlId="wd-available-from">
               <Form.Label>Available From</Form.Label>
-              <Form.Control type="date" />
+              <Form.Control type="date" defaultValue={assignment.availableDate || ""} />
             </Form.Group>
           </Col>
           <Col>
             <Form.Group controlId="wd-available-until">
               <Form.Label>Until</Form.Label>
-              <Form.Control type="date" />
+              <Form.Control type="date" defaultValue={assignment.untilDate || ""} />
             </Form.Group>
           </Col>
         </Row>
+
+        {/* Action Buttons */}
+        <div className="d-flex gap-2">
+          <Link to={`/Kambaz/Courses/${cid}/Assignments`}>
+            <Button variant="secondary">Cancel</Button>
+          </Link>
+          <Link to={`/Kambaz/Courses/${cid}/Assignments`}>
+            <Button variant="danger">Save</Button>
+          </Link>
+        </div>
       </Form>
     </div>
   );

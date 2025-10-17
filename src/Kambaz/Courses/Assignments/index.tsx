@@ -1,7 +1,11 @@
 import { ListGroup, Button, InputGroup, FormControl } from "react-bootstrap";
 import { BsGripVertical, BsPlusLg, BsSearch } from "react-icons/bs";
+import { Link, useParams } from "react-router";
+import * as db from "../../Database";
 
 export default function Assignments() {
+  const { cid } = useParams();
+  const assignments = db.assignments.filter(a => a.course == cid);
   return (
     <div id="wd-assignments" className="p-3">
       {/* Top Controls */}
@@ -39,60 +43,33 @@ export default function Assignments() {
       {/* Assignment Section */}
       <ListGroup className="rounded-0" id="wd-assignment-list">
         <ListGroup.Item className="p-0 mb-5 fs-5 border-gray">
-          {/* Assignment group title */}
+          {/* Section Header */}
           <div className="wd-title p-3 ps-2 bg-secondary d-flex align-items-center justify-content-between">
             <div>
               <BsGripVertical className="me-2 fs-3" />
-              ASSIGNMENTS 40% of Total
+              ASSIGNMENTS
             </div>
             <Button variant="light" size="sm">
               <BsPlusLg />
             </Button>
           </div>
 
-          {/* Assignment items */}
+          {/* Assignment Items */}
           <ListGroup className="wd-lessons rounded-0">
-            <ListGroup.Item className="p-3 ps-1 border-start border-success border-4">
-              <BsGripVertical className="me-2 fs-3" />
-              <a
-                href="#/Kambaz/Courses/1234/Assignments/123"
-                className="wd-assignment-link fw-bold text-dark text-decoration-none"
+            {assignments.map((assignment) => (
+              <ListGroup.Item
+                key={assignment._id}
+                className="p-3 ps-1 border-start border-success border-4"
               >
-                A1 - ENV + HTML
-              </a>
-              <div className="text-muted small mt-1">
-                Multiple Modules | Not available until May 6 at 12:00am | Due
-                May 13 at 11:59pm | 100 pts
-              </div>
-            </ListGroup.Item>
-
-            <ListGroup.Item className="p-3 ps-1 border-start border-success border-4">
-              <BsGripVertical className="me-2 fs-3" />
-              <a
-                href="#/Kambaz/Courses/1234/Assignments/124"
-                className="wd-assignment-link fw-bold text-dark text-decoration-none"
-              >
-                A2 - CSS + BOOTSTRAP
-              </a>
-              <div className="text-muted small mt-1">
-                Multiple Modules | Not available until May 13 at 12:00am | Due
-                May 20 at 11:59pm | 100 pts
-              </div>
-            </ListGroup.Item>
-
-            <ListGroup.Item className="p-3 ps-1 border-start border-success border-4">
-              <BsGripVertical className="me-2 fs-3" />
-              <a
-                href="#/Kambaz/Courses/1234/Assignments/125"
-                className="wd-assignment-link fw-bold text-dark text-decoration-none"
-              >
-                A3 - JAVASCRIPT + REACT
-              </a>
-              <div className="text-muted small mt-1">
-                Multiple Modules | Not available until May 20 at 12:00am | Due
-                May 27 at 11:59pm | 100 pts
-              </div>
-            </ListGroup.Item>
+                <BsGripVertical className="me-2 fs-3" />
+                <Link
+                  to={`/Kambaz/Courses/${cid}/Assignments/${assignment._id}`}
+                  className="wd-assignment-link fw-bold text-dark text-decoration-none"
+                >
+                  {assignment.title}
+                </Link>
+              </ListGroup.Item>
+            ))}
           </ListGroup>
         </ListGroup.Item>
       </ListGroup>

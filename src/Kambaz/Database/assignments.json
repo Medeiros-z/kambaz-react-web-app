@@ -1,0 +1,31 @@
+[
+  { "_id": "A101", "title": "Propulsion Assignment", "course": "RS101", "points": "20", "description": "Prove you know Propulsion", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A102", "title": "Combustion Analysis", "course": "RS101", "points": "20", "description": "Prove you know Compustion", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A103", "title": "Nozzle Design Project", "course": "RS101", "points": "50", "description": "Prove you know Nozzel Design", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A201", "title": "Aerodynamics Quiz", "course": "RS102", "points": "10", "description": "Prereq check", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A202", "title": "Flow Analysis", "course": "RS102", "points": "50", "description": "Analyze Flow", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A203", "title": "Heating Analysis", "course": "RS102", "points": "50", "description": "Analyze Heat", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A301", "title": "Structural Design Task", "course": "RS103", "points": "20", "description": "Design Structure", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A302", "title": "Orbital Calculations", "course": "RS103", "points": "20", "description": "Calculate Orbit", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A303", "title": "Systems Engineering Exam", "course": "RS103", "points": "100", "description": "Final Exam", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+
+  { "_id": "A401", "title": "Introduce Yourself Assingment", "course": "RS104", "points": "5", "description": "Introduce yourself", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A402", "title": "Reactions of Organic Compounds Assignment", "course": "RS104", "points": "50", "description": "Prove you know Reactions", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A403", "title": "Final Exam", "course": "RS104", "points": "100", "description": "Pass the class", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  
+  { "_id": "A501", "title": "Recap of Orgo Quiz", "course": "RS105", "points": "5", "description": "Prereq check", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A502", "title": "Metals Assignment", "course": "RS105", "points": "50", "description": "Prove you know metals", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A503", "title": "Final Exam", "course": "RS105", "points": "100", "description": "Pass the class", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  
+  { "_id": "A601", "title": "Physics Quiz", "course": "RS106", "points": "5", "description": "Prereq check", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A602", "title": "Molecules and their properties Assignment", "course": "RS106", "points": "50", "description": "Prove you know Molecules", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A603", "title": "Physical Lab", "course": "RS106", "points": "50", "description": "Final Project", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+
+  { "_id": "A701", "title": "Galactic Basic and Aurebesh Assignment", "course": "RS107", "points": "20", "description": "Learn StarWars", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A702", "title": "Latin experiement", "course": "RS107", "points": "20", "description": "Learn Latin", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A703", "title": "Intro to Elvish", "course": "RS107", "points": "20", "description": "Learn Elvish", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  
+  { "_id": "A801", "title": "What is Middle Earth Assignment", "course": "RS108", "points": "15", "description": "Learn about Middle Earth", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A802", "title": "Means of Power Essay", "course": "RS108", "points": "50", "description": "Write about power in Middle Earth society", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" },
+  { "_id": "A803", "title": "Wizard, Elf, or Man Exam", "course": "RS108", "points": "100", "description": "Take an exam on the species you know best", "dueDate": "2025-10-17", "availableDate": "2025-10-03", "untilDate": "2025-10-17" }
+]
