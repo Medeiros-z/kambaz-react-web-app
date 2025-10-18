@@ -1,5 +1,5 @@
-import Math, { add, subtract, multiply, divide } from "./MAth";
-import * as Matematica from "./MAth";
+import Math, { add, subtract, multiply, divide } from "./Math";
+import * as Matematica from "./Math";
 export default function DestructingImports() {
   return (
     <div id="wd-destructuring-imports">
