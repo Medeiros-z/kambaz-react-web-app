@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ListGroup, Button, Form } from "react-bootstrap";
 import { addTodo, deleteTodo, updateTodo } from "./todosReducer";
