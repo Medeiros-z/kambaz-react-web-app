@@ -4,8 +4,10 @@ import Signin from "./Signin";
 import Signup from "./Signup";
 import Profile from "./Profile";
 import AccountNavigation from "./Navigation";
+import { useSelector } from "react-redux";
 
 export default function Account() {
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   return (
     <Container fluid id="wd-account-screen" className="p-3 d-flex">
       {/* Navigation: fixed width, hidden on small screens */}
@@ -19,7 +21,7 @@ export default function Account() {
       {/* Main content: fills remaining space */}
       <div style={{ flex: 1 }}>
         <Routes>
-          <Route path="/" element={<Navigate to="/Kambaz/Account/Signin" replace />} />
+          <Route path="/" element={<Navigate to={currentUser ? "/Kambaz/Account/Profile" : "/Kambaz/Account/Signin"} />} />
           <Route path="/Signin" element={<Signin />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Profile" element={<Profile />} />

@@ -124,5 +124,19 @@
     "section": "S101",
     "lastActivity": "1852-11-27",
     "totalActivity": "21:32:43"
+  },
+  {
+    "_id": "56",
+    "username": "zack",
+    "password": "123",
+    "firstName": "Zack",
+    "lastName": "M",
+    "email": "z@m.com",
+    "dob": "2004-12-15T00:00:00.000Z",
+    "role": "ADMIN",
+    "loginId": "001234561S",
+    "section": "S101",
+    "lastActivity": "2020-10-01",
+    "totalActivity": "10:21:32"
   }
 ]
