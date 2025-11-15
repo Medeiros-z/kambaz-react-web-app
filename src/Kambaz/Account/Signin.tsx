@@ -4,7 +4,7 @@ import { setCurrentUser } from "./reducer";
 import { useNavigate } from "react-router-dom";
 import { FormControl, Button } from "react-bootstrap";
 import * as db from "../Database";
-import * as client from "./client";
+//import * as client from "./client";
 import { Link } from "react-router";
 
 export default function Signin() {
@@ -13,12 +13,12 @@ export default function Signin() {
   const navigate = useNavigate();
   const sessionUsers = useSelector((state: any) => state.accountReducer.users);
 
-  const signin = async () => {
-    const user =  await client.signin(credentials);
-    if (!user) return;
-    dispatch(setCurrentUser(user));
-    navigate("/Kambaz/Dashboard");
-  };
+  // const signin = async () => {
+  //   const user =  await client.signin(credentials);
+  //   if (!user) return;
+  //   dispatch(setCurrentUser(user));
+  //   navigate("/Kambaz/Dashboard");
+  // };
 
   const handleSignin = () => {
     // check both db.users and session users
