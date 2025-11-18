@@ -1,14 +1,12 @@
-import { ListGroup, Button, InputGroup, FormControl, ListGroupItem } from "react-bootstrap";
-import { BsGripVertical, BsPlusLg, BsSearch } from "react-icons/bs";
-import { Link, useParams } from "react-router";
-import * as db from "../../Database";
+import { ListGroup, FormControl } from "react-bootstrap";
+import { BsGripVertical } from "react-icons/bs";
+import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import AssignmentControlButtons from "./AssignmentControlButtons";
-import { FaPlus } from "react-icons/fa";
 import AssignmentEditor from "./Editor";
 import AssignmentControls from "./AssignmentControls";
 
-import { setAssignments, addAssignment, editAssignment, updateAssignment, deleteAssignment } from "./reducer";
+import { setAssignments, addAssignment, updateAssignment, deleteAssignment } from "./reducer";
 import { useDispatch, useSelector } from "react-redux";
 import * as coursesClient from "../client";
 import * as assignmentsClient from "./client";

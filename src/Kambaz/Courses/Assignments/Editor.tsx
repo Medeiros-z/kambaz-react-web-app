@@ -1,10 +1,9 @@
 import { Form, Row, Col, Button, Modal } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
 
 export default function AssignmentEditor({
   show,
   handleClose,
-  dialogTitle,
+  //dialogTitle,
   assignmentName,
   setAssignmentName,
   addAssignment

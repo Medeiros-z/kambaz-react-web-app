@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { BsPlusLg } from "react-icons/bs";
-import AssignmentEditor from "./Editor";
 
 export default function AssignmentControls(
-    { assignmentName, setAssignmentName, addAssignment }:
+    { addAssignment }:
     { assignmentName: string; setAssignmentName: (title: string) => void; addAssignment: () => void; }) {
 
   // ---------- NO LONGER NEED LOCAL SHOW STATE HERE ----------

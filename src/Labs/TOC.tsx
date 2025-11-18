@@ -32,5 +32,11 @@ export default function TOC() {
       <Nav.Item>
         <Nav.Link href="https://github.com/medeiros-z" target="_blank"> My GitHub </Nav.Link>
       </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="https://github.com/Medeiros-z/kambaz-react-web-app" target="_blank"> Kambaz React Repo </Nav.Link>
+      </Nav.Item>
+      <Nav.Item>
+        <Nav.Link href="https://github.com/Medeiros-z/kambaz-node-server-app" target="_blank"> Kambaz Server Repo </Nav.Link>
+      </Nav.Item>
    </Nav>
 );}
