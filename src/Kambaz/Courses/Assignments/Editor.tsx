@@ -1,8 +1,10 @@
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Row, Col, Button, Modal } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import * as db from "../../Database";
 
-export default function AssignmentEditor() {
+export default function AssignmentEditor({show, handleClose, dialogTitle, assignmentName, setAssignmentName, addAssignment}: {
+  show: boolean; handleClose: () => void; dialogTitle: string; assignmentName: string; setAssignmentName: (name: string) => void;
+  addAssignment: () => void; }) {
   const { cid, aid } = useParams();
   const assignment = db.assignments.find(
     (a) => a._id === aid && a.course === cid
@@ -13,6 +15,7 @@ export default function AssignmentEditor() {
   }
 
   return (
+    <Modal show={show} onHide={handleClose}>
     <div id="wd-assignments-editor" className="p-3">
       <Form>
         {/* Assignment Name */}
@@ -111,5 +114,6 @@ export default function AssignmentEditor() {
         </div>
       </Form>
     </div>
+    </Modal>
   );
 }

@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import modulesReducer from "./Courses/Modules/reducer";
 import accountReducer from "./Account/reducer";
-import assignmentReducer from "./Courses/Assignments/reducer";
+import assignmentsReducer from "./Courses/Assignments/reducer";
 import coursesReducer from "./Courses/reducer";
 
 const store = configureStore({
   reducer: {
     modulesReducer,
     accountReducer,
-    assignmentReducer,
+    assignmentsReducer,
     coursesReducer,
   },
 });
@@ -17,7 +17,7 @@ const store = configureStore({
 export type RootState = {
   modulesReducer: ReturnType<typeof modulesReducer>;
   accountReducer: ReturnType<typeof accountReducer>;
-  assignmentReducer: ReturnType<typeof assignmentReducer>;
+  assignmentsReducer: ReturnType<typeof assignmentsReducer>;
   coursesReducer: ReturnType<typeof coursesReducer>;
 };
 
