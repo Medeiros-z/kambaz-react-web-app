@@ -7,7 +7,6 @@ import { FaPlus } from "react-icons/fa";
 export default function Users() {
  const [users, setUsers] = useState<any[]>([]);
  const [role, setRole] = useState("");
- //const [name, setName] = useState("");
  const [, setName] = useState("");
 
   const createUser = async () => {
@@ -67,6 +66,6 @@ export default function Users() {
         <option value="TA">Assistants</option> <option value="FACULTY">Faculty</option>
         <option value="ADMIN">Administrators</option>
       </select>
-       <PeopleTable users={users} />
+       <PeopleTable />
    </div>
 );}

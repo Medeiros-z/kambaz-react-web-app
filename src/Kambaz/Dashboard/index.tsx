@@ -1,17 +1,28 @@
 import { Link } from "react-router-dom";
 import { Card, Button, Row, Col, FormControl } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux";
-import type { RootState, AppDispatch } from "../store";
-import { addCourse, updateCourse, deleteCourse } from "../Courses/reducer";
 import { useState } from "react";
 
-export default function Dashboard() {
-  const dispatch = useDispatch<AppDispatch>();
-
-  // Keep current reducer keys
-  const courses = useSelector((state: RootState) => state.coursesReducer.courses);
-  //const currentUser = useSelector((state: RootState) => state.accountReducer.currentUser);
-
+export default function Dashboard({
+  courses,
+  // course,
+  // setCourse,
+  addNewCourse,
+  deleteCourse,
+  updateCourse,
+  enrolling, 
+  setEnrolling,
+  updateEnrollment
+}: {
+  courses: any[];
+  course: any;
+  setCourse: (course: any) => void;
+  addNewCourse: (course: any) => void;
+  deleteCourse: (courseId: string) => void;
+  updateCourse: (course: any) => void;
+  enrolling: boolean; 
+  setEnrolling: (enrolling: boolean) => void;
+  updateEnrollment: (courseId: string, enrolled: boolean) => void;
+}) {
   // Local state for editing/creating a course
   const [editingCourse, setEditingCourse] = useState({
     _id: "",
@@ -19,34 +30,51 @@ export default function Dashboard() {
     description: "",
   });
 
+  /** -----------------------------  
+   *  ADD COURSE (prop-supplied)
+   * ------------------------------ */
   const handleAddCourse = () => {
     if (!editingCourse.name.trim()) return;
-    dispatch(addCourse(editingCourse));
+    addNewCourse(editingCourse);              // ⬅️ Use parent function
     setEditingCourse({ _id: "", name: "", description: "" });
   };
 
+  /** -----------------------------  
+   *  UPDATE COURSE (prop-supplied)
+   * ------------------------------ */
   const handleUpdateCourse = () => {
     if (!editingCourse._id) return;
-    dispatch(updateCourse(editingCourse));
+    updateCourse(editingCourse);              // ⬅️ Use parent function
     setEditingCourse({ _id: "", name: "", description: "" });
   };
 
+  /** -----------------------------  
+   *  DELETE COURSE (prop-supplied)
+   * ------------------------------ */
   const handleDeleteCourse = (courseId: string) => {
     if (window.confirm("Are you sure you want to delete this course?")) {
-      dispatch(deleteCourse(courseId));
+      deleteCourse(courseId);                 // ⬅️ Use parent function
       if (editingCourse._id === courseId) {
         setEditingCourse({ _id: "", name: "", description: "" });
       }
     }
   };
 
+  /** -----------------------------  
+   *  Begin Edit
+   * ------------------------------ */
   const handleEditClick = (course: any) => {
     setEditingCourse(course);
   };
 
   return (
     <div id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1>
+      <h1 id="wd-dashboard-title">
+        Dashboard
+        <button onClick={() => setEnrolling(!enrolling)} className="float-end btn btn-primary" >
+          {enrolling ? "My Courses" : "All Courses"}
+        </button>
+      </h1>
       <hr />
 
       <h5>
@@ -95,6 +123,15 @@ export default function Dashboard() {
                   <Card.Img src="/images/reactjs.jpg" variant="top" width="100%" height={160} />
                   <Card.Body className="card-body">
                     <Card.Title className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                      {enrolling && (
+                        <button onClick={(event) => {
+                        event.preventDefault();
+                        updateEnrollment(course._id, !course.enrolled);
+                        }} 
+                        className={`btn ${ course.enrolled ? "btn-danger" : "btn-success" } float-end`} >
+                          {course.enrolled ? "Unenroll" : "Enroll"}
+                        </button>
+                      )}
                       {course.name}
                     </Card.Title>
                     <Card.Text
