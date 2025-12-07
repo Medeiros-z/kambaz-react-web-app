@@ -25,23 +25,6 @@ export default function Modules() {
    fetchModulesForCourse();
   }, [cid]);
 
-  // const createModuleForCourse = async () => {
-  //   if (!cid) return;
-  //   const newModule = { name: moduleName, course: cid };
-  //   const module = await coursesClient.createModuleForCourse(cid, newModule);
-  //   dispatch(addModule(module));
-  // };
-
-  // const removeModule = async (moduleId: string) => {
-  //   await modulesClient.deleteModule(moduleId);
-  //   dispatch(deleteModule(moduleId));
-  // };
-
-  // const saveModule = async (module: any) => {
-  //   await modulesClient.updateModule(module);
-  //   dispatch(updateModule(module));
-  // };
-
   const addModuleHandler = async () => {
    const newModule = await coursesClient.createModuleForCourse(cid!, {
      name: moduleName,
@@ -67,31 +50,17 @@ export default function Modules() {
       <ModulesControls 
       setModuleName={setModuleName} 
       moduleName={moduleName}
-      addModule={addModuleHandler} 
-      //addModule={createModuleForCourse} 
+      addModule={addModuleHandler}
       />
         
         <br /><br /><br /><br />
         
         <ListGroup id="wd-modules" className="rounded-0">
         {modules
-          //.filter((module: any) => module.course === cid)
           .map((module: any) => (
           <ListGroup.Item className="wd-module p-0 mb-5 fs-5 border-gray">
             <div className="wd-title p-3 ps-2 bg-secondary">
               <BsGripVertical className="me-2 fs-3" />
-              {/* {!module.editing && module.name}
-              { module.editing && (
-                <FormControl className="w-50 d-inline-block"
-                      onChange={(e) => dispatch(updateModule({ ...module, name: e.target.value }))}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          //dispatch(updateModule({ ...module, editing: false }));
-                          saveModule({ ...module, editing: false });
-                        }
-                      }}
-                      defaultValue={module.name}/>
-              )} */}
               {!module.editing && module.name}
               {module.editing && (
                 <input onChange={(e) =>
@@ -106,7 +75,6 @@ export default function Modules() {
 
               <ModuleControlButtons
                 moduleId={module._id}
-                //deleteModule={(moduleId) => removeModule(moduleId)}
                 deleteModule={(moduleId) => deleteModuleHandler(moduleId)}
                 editModule={(moduleId) => dispatch(editModule(moduleId))} />
             </div>
