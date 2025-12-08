@@ -1,51 +1,41 @@
 import { useParams, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import * as quizzesClient from "./client";
 
-type QuizDetailsProps = {
-  quizId?: string; // optional if navigating directly
-};
-
-export default function QuizDetails({ quizId }: QuizDetailsProps) {
-  const { cid, qid } = useParams();
+export default function QuizDetails() {
+  const { 
+    //cid, 
+    qid } = useParams();
   const navigate = useNavigate();
 
-  const [quiz, setQuiz] = useState<any>({
-    title: "",
-    type: "Graded Quiz",
-    points: 0,
-    assignmentGroup: "Quizzes",
-    shuffleAnswers: true,
-    timeLimit: 20,
-    multipleAttempts: false,
-    attempts: 1,
-    showCorrectAnswers: false,
-    accessCode: "",
-    oneQuestionAtATime: true,
-    webcamRequired: false,
-    lockQuestionsAfterAnswering: false,
-    dueDate: "",
-    availableDate: "",
-    untilDate: "",
-  });
-
+  const quizzes = useSelector((state: any) => state.quizzesReducer.quizzes);
+  const [quiz, setQuiz] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  const quizIdToLoad = quizId || qid;
 
   // Format dates safely
   const formatDate = (dateString: string) => {
     if (!dateString) return "-";
     const d = new Date(dateString);
-    if (isNaN(d.getTime())) return dateString; // fallback
+    if (isNaN(d.getTime())) return dateString;
     return d.toLocaleString();
   };
 
   const fetchQuiz = async () => {
-    if (!quizIdToLoad) return;
+    if (!qid) return;
+
+    // Try to get from store first
+    const fromStore = quizzes.find((q: any) => q._id === qid);
+    if (fromStore) {
+      setQuiz(fromStore);
+      setLoading(false);
+      return;
+    }
+
+    // Otherwise fetch from API
     try {
-      const data = await quizzesClient.getQuizById(quizIdToLoad);
+      const data = await quizzesClient.getQuizById(qid);
       setQuiz(data);
     } catch (err: any) {
       setError("Failed to load quiz.");
@@ -56,28 +46,27 @@ export default function QuizDetails({ quizId }: QuizDetailsProps) {
 
   useEffect(() => {
     fetchQuiz();
-  }, [quizIdToLoad]);
+  }, [qid, quizzes]);
 
+  // ✅ Use relative navigation to avoid breaking hash routes
   const startQuiz = () => {
-    if (!quizIdToLoad) return;
-    navigate(`/courses/${cid}/quizzes/${quizIdToLoad}/take`);
+    if (!qid) return;
+    navigate(`take`);
   };
 
   const editQuiz = () => {
-    if (!quizIdToLoad) return;
-    navigate(`/courses/${cid}/quizzes/${quizIdToLoad}/edit`);
+    if (!qid) return;
+    navigate(`edit`);
   };
 
   const previewQuiz = () => {
-    if (!quizIdToLoad) return;
-    navigate(`/courses/${cid}/quizzes/${quizIdToLoad}/preview`);
+    if (!qid) return;
+    navigate(`preview`);
   };
 
-  // Loading UI
   if (loading) return <div>Loading quiz...</div>;
-
-  // Error UI
   if (error) return <div className="text-danger">{error}</div>;
+  if (!quiz) return <div>Quiz not found</div>;
 
   return (
     <div className="wd-quiz-details">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 
 import MultipleChoiceEditor from "./MultipleChoiceEditor";
@@ -13,37 +13,65 @@ export default function QuestionsEditor({
   setQuiz: (q: any) => void;
 }) {
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
+  const [newType, setNewType] = useState("Multiple Choice");
 
   const addQuestion = () => {
-    const newQuestion = {
+    const base = {
       id: `q_${Date.now()}`,
-      type: "Multiple Choice",
+      type: newType,
       title: "",
       question: "",
       points: 1,
-      choices: ["", ""], // default two choices for multiple choice
-      correctChoice: 0,
-      answers: [], // for fill in the blank
-      correctAnswer: true, // for true/false
     };
-    const updatedQuestions = [...(quiz.questions || []), newQuestion];
-    setQuiz({ ...quiz, questions: updatedQuestions });
-    setEditingIndex(updatedQuestions.length - 1);
+
+    let newQuestion: any;
+
+    switch (newType) {
+      case "Multiple Choice":
+        newQuestion = {
+          ...base,
+          choices: ["", ""],
+          correctChoice: 0,
+        };
+        break;
+
+      case "True/False":
+        newQuestion = {
+          ...base,
+          correctAnswer: true,
+        };
+        break;
+
+      case "Fill in the Blank":
+        newQuestion = {
+          ...base,
+          answers: [""],
+        };
+        break;
+
+      default:
+        newQuestion = base;
+    }
+
+    const updated = [...(quiz.questions || []), newQuestion];
+    setQuiz({ ...quiz, questions: updated });
+    setEditingIndex(updated.length - 1);
   };
 
-  const saveQuestion = (question: any, index: number) => {
+  const saveQuestion = (updatedQuestion: any, index: number) => {
     const updatedQuestions = quiz.questions.map((q: any, i: number) =>
-      i === index ? question : q
+      i === index ? updatedQuestion : q
     );
     setQuiz({ ...quiz, questions: updatedQuestions });
     setEditingIndex(null);
   };
 
   const cancelEdit = (index: number) => {
-    // If a newly added question is cancelled, remove it
-    if (quiz.questions[index].title === "" && quiz.questions[index].question === "") {
-      const updatedQuestions = quiz.questions.filter((_: any, i: number) => i !== index);
-      setQuiz({ ...quiz, questions: updatedQuestions });
+    // If a newly added question was never touched, remove it
+    const q = quiz.questions[index];
+    if (!q.title && !q.question) {
+      const filtered = quiz.questions.filter((_: any, i: number) => i !== index);
+      setQuiz({ ...quiz, questions: filtered });
     }
     setEditingIndex(null);
   };
@@ -54,9 +82,23 @@ export default function QuestionsEditor({
 
   return (
     <div className="questions-editor">
-      <Button variant="outline-primary" className="mb-3" onClick={addQuestion}>
-        New Question
-      </Button>
+
+      {/* --- NEW QUESTION TYPE DROPDOWN + BUTTON --- */}
+      <div className="d-flex gap-2 align-items-center mb-3">
+        <select
+          className="form-select w-auto"
+          value={newType}
+          onChange={(e) => setNewType(e.target.value)}
+        >
+          <option>Multiple Choice</option>
+          <option>True/False</option>
+          <option>Fill in the Blank</option>
+        </select>
+
+        <Button variant="outline-primary" onClick={addQuestion}>
+          New Question
+        </Button>
+      </div>
 
       {quiz.questions?.map((q: any, idx: number) => (
         <Card key={q.id || idx} className="mb-2 p-2">

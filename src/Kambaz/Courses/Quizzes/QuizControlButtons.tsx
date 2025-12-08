@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 
 export default function QuizControlButtons({
-  quizId,
+  //quizId,
   deleteQuiz,
   editQuiz,
 }: {

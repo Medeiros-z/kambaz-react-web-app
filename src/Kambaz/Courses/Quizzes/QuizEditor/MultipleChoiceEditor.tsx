@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Form, Button, InputGroup } from "react-bootstrap";
 
 export default function MultipleChoiceEditor({
