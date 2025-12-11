@@ -1,7 +1,7 @@
 import { Modal, Button, Form, Tab, Tabs } from "react-bootstrap";
 import { useState } from "react";
 
-import QuestionsEditor from "./QuestionsEditor"; // your question editors container
+import QuestionsEditor from "./QuestionsEditor";
 
 export default function QuizEditor({
   show,

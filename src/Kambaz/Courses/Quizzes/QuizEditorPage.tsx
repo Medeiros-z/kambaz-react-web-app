@@ -37,7 +37,7 @@ export default function QuizEditorPage() {
   return (
     <QuizEditor
       show={true}
-      handleClose={() => navigate("..", { relative: "path" })} // same here
+      handleClose={() => navigate("..", { relative: "path" })}
       dialogTitle="Edit Quiz"
       quiz={quiz}
       setQuiz={(updated: any) => dispatch(updateQuiz(updated))}

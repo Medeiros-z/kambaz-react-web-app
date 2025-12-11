@@ -6,7 +6,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
   return (
     <div className="d-flex flex-column gap-3">
 
-      {/* TITLE */}
+      {/* Title */}
       <div>
         <label className="fw-bold">Title</label>
         <input
@@ -16,7 +16,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         />
       </div>
 
-      {/* DESCRIPTION (textarea instead of WYSIWYG) */}
+      {/* Description */}
       <div>
         <label className="fw-bold">Description</label>
         <textarea
@@ -27,7 +27,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         />
       </div>
 
-      {/* QUIZ TYPE */}
+      {/* Quiz Type */}
       <div>
         <label className="fw-bold">Quiz Type</label>
         <select
@@ -42,7 +42,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         </select>
       </div>
 
-      {/* POINTS */}
+      {/* Points */}
       <div>
         <label className="fw-bold">Points</label>
         <input
@@ -53,7 +53,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         />
       </div>
 
-      {/* ASSIGNMENT GROUP */}
+      {/* Aassignment Group */}
       <div>
         <label className="fw-bold">Assignment Group</label>
         <select
@@ -68,7 +68,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         </select>
       </div>
 
-      {/* SHUFFLE ANSWERS */}
+      {/* Shuffle Answers */}
       <div>
         <label className="fw-bold me-2">Shuffle Answers</label>
         <select
@@ -81,7 +81,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         </select>
       </div>
 
-      {/* TIME LIMIT */}
+      {/* Time Limit */}
       <div>
         <label className="fw-bold">Time Limit (Minutes)</label>
         <input
@@ -92,7 +92,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         />
       </div>
 
-      {/* MULTIPLE ATTEMPTS */}
+      {/* Multiple Attempts flag */}
       <div>
         <label className="fw-bold me-2">Multiple Attempts</label>
         <select
@@ -105,7 +105,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         </select>
       </div>
 
-      {/* HOW MANY ATTEMPTS */}
+      {/* Number of Attepts */}
       {quiz.multipleAttempts === "Yes" && (
         <div>
           <label className="fw-bold">How Many Attempts</label>
@@ -118,7 +118,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         </div>
       )}
 
-      {/* SHOW CORRECT ANSWERS */}
+      {/* Show correct answers */}
       <div>
         <label className="fw-bold">Show Correct Answers</label>
         <input
@@ -129,7 +129,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         />
       </div>
 
-      {/* ACCESS CODE */}
+      {/* Access Code */}
       <div>
         <label className="fw-bold">Access Code</label>
         <input
@@ -139,7 +139,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         />
       </div>
 
-      {/* YES/NO OPTIONS */}
+      {/* Yes/No Options */}
       {[
         ["One Question at a Time", "oneAtATime"],
         ["Webcam Required", "webcam"],
@@ -158,7 +158,7 @@ export default function DetailsTab({ quiz, setQuiz }: any) {
         </div>
       ))}
 
-      {/* DATES */}
+      {/* Dates */}
       {["dueDate", "availableDate", "untilDate"].map((field) => (
         <div key={field}>
           <label className="fw-bold">

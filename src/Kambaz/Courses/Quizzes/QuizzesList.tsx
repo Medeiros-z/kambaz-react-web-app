@@ -41,13 +41,13 @@ export default function QuizzesList({ quizzes, createQuiz, removeQuiz, togglePub
           >
             <div className="wd-quizComponents p-3 ps-2">
               
-              {/* TITLE*/}
+              {/* Title*/}
               <div className="wd-title d-flex align-items-center mb-2">
                 <BsGripVertical className="me-2 fs-3" />
                 <span className="fs-5">{quiz.title}</span>
               </div>
               
-              {/* DETAILS */}
+              {/* Details */}
               <div className="d-flex justify-content-between align-items-center mb-2">
                 <div className="wd-availableDate text-dark ms-5">
                   {quiz.dueDate ? `Available: ${new Date(quiz.availableDate).toLocaleString()}` : "No available date"}
@@ -65,7 +65,7 @@ export default function QuizzesList({ quizzes, createQuiz, removeQuiz, togglePub
                   {quiz.questions.length} Questions
                 </div>
 
-                {/* CONTROL BUTTONS */}
+                {/* Control Buttons */}
                 <QuizControlButtons
                   quizId={quiz._id}
                   isPublished={quiz.isPublished}

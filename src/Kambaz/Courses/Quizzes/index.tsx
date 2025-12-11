@@ -52,13 +52,13 @@ export default function Quizzes() {
       questions: [],
     };
 
-    // 1️⃣ Create via API
+    // Create via API
     const newQuiz = await quizzesClient.createQuizForCourse(cid, quiz);
 
-    // 2️⃣ Add to Redux store
+    // Add to Redux store
     dispatch(setQuizzes([...quizzes, newQuiz]));
 
-    // 3️⃣ Navigate to details page (relative path works with hash routing)
+    // Navigate to details page (relative path works with hash routing)
     navigate(`${newQuiz._id}`);
   };
 

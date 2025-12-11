@@ -83,7 +83,7 @@ export default function QuestionsEditor({
   return (
     <div className="questions-editor">
 
-      {/* --- NEW QUESTION TYPE DROPDOWN + BUTTON --- */}
+      {/* Question type dropdown and button */}
       <div className="d-flex gap-2 align-items-center mb-3">
         <select
           className="form-select w-auto"
