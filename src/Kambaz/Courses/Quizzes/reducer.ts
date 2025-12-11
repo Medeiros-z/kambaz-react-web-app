@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-//import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   quizzes: [] as any[],
@@ -23,10 +22,15 @@ const quizzesSlice = createSlice({
         q._id === quiz._id ? quiz : q
       );
     },
+    publishQuiz: (state, { payload }: { payload: { quizId: string; isPublished: boolean } }) => {
+      state.quizzes = state.quizzes.map((q: any) =>
+        q._id === payload.quizId ? { ...q, isPublished: payload.isPublished } : q
+      );
+    },
   },
 });
 
-export const { setQuizzes, addQuiz, deleteQuiz, updateQuiz } =
+export const { setQuizzes, addQuiz, deleteQuiz, updateQuiz, publishQuiz } =
   quizzesSlice.actions;
 
 export default quizzesSlice.reducer;

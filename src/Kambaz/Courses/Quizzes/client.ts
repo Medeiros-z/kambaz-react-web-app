@@ -19,10 +19,10 @@ export const createQuizForCourse = async (courseId: string, quiz: any) => {
   return data;
 };
 
-export const updateQuiz = async (quiz: any) => {
+export const updateQuiz = async (quizId: string, updates: any) => {
   const { data } = await axiosWithCredentials.put(
-    `${QUIZZES_API}/quizzes/${quiz._id}`,
-    quiz
+    `${QUIZZES_API}/quizzes/${quizId}`,
+    updates
   );
   return data;
 };
@@ -39,3 +39,10 @@ export const getQuizById = async (quizId: string) => {
   return data;
 };
 
+export const toggleQuizPublish = async (quizId: string, isPublished: boolean) => {
+  const { data } = await axiosWithCredentials.patch(
+    `${QUIZZES_API}/quizzes/${quizId}/publish`,
+    { isPublished }
+  );
+  return data; // Returns the updated quiz object
+};

@@ -48,7 +48,6 @@ export default function QuizDetails() {
     fetchQuiz();
   }, [qid, quizzes]);
 
-  // ✅ Use relative navigation to avoid breaking hash routes
   const startQuiz = () => {
     if (!qid) return;
     navigate(`take`);

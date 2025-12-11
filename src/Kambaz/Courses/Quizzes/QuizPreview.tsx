@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 
-export default function TakeQuiz() {
+export default function QuizPreview() {
   const { qid } = useParams();
   const navigate = useNavigate();
 
@@ -28,8 +28,9 @@ export default function TakeQuiz() {
     quiz.questions.forEach((q: any) => {
       const userAns = answers[q.id];
 
-      if (q.type === "Multiple Choice" && userAns === q.choices.findIndex((c: any) => c.correct)) {
-        total += q.points;
+      if (q.type === "Multiple Choice") {
+        const correctIndex = q.choices.findIndex((c: any) => c.correct);
+        if (userAns === correctIndex) total += q.points;
       }
 
       if (q.type === "True/False" && userAns === q.answer) {
@@ -47,14 +48,13 @@ export default function TakeQuiz() {
     setSubmitted(true);
   };
 
-  // Determine which questions to show
   const questionsToDisplay = quiz.oneQuestionAtATime
     ? [quiz.questions[currentIndex]]
     : quiz.questions;
 
   return (
     <div>
-      <h2>{quiz.title}</h2>
+      <h2>Preview: {quiz.title}</h2>
       <p>{quiz.description}</p>
 
       {!submitted ? (
@@ -124,14 +124,14 @@ export default function TakeQuiz() {
               {currentIndex < quiz.questions.length - 1 ? (
                 <Button onClick={() => setCurrentIndex((i) => i + 1)}>Next</Button>
               ) : (
-                <Button onClick={gradeQuiz}>Submit Quiz</Button>
+                <Button onClick={gradeQuiz}>Submit Preview</Button>
               )}
             </div>
           )}
 
           {!quiz.oneQuestionAtATime && (
             <Button className="mt-3" onClick={gradeQuiz}>
-              Submit Quiz
+              Submit Preview
             </Button>
           )}
         </>
@@ -141,9 +141,9 @@ export default function TakeQuiz() {
           <Button
             variant="secondary"
             className="mt-3"
-            onClick={() => navigate(`../`)}
+            onClick={() => navigate("..")}
           >
-            Back to Quiz Details
+            Back
           </Button>
         </>
       )}
